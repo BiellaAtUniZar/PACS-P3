@@ -23,7 +23,7 @@ using my_float = long double;
  */
 my_float pi_taylor(size_t steps) {
 	my_float result = 0;
-	for (int n = 0; n < steps; n++) {
+	for (size_t n = 0; n < steps; n++) {
 		result += pow(-1, n)/(2*n+1);
 	}
 	return 4 * result;
