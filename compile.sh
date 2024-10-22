@@ -16,7 +16,9 @@ fi
 
 # Define the remote server and path
 remote_server="pilgor.cps.unizar.es"
-remote_path="/home/$remote_user/"
+remote_path="/home/$remote_user/pacs3"
 
 # Send the compiled files to the remote server via SSH
-scp ./bin/* "$remote_user@$remote_server:$remote_path"
+scp ./src/* "$remote_user@$remote_server:$remote_path/src"
+scp PilgorCMakeLists.txt "$remote_user@$remote_server:$remote_path/CMakeLists.txt"
+ssh $remote_user@$remote_server cd $remote_path && cmake . && make
