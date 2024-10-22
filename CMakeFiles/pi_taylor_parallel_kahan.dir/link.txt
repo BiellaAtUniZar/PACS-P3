@@ -1,0 +1,1 @@
+/usr/bin/aarch64-linux-gnu-g++ -Wall -Wextra -O3 -rdynamic CMakeFiles/pi_taylor_parallel_kahan.dir/src/pi_taylor_parallel_kahan.cc.o -o bin/pi_taylor_parallel_kahan  -lpthread

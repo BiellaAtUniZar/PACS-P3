@@ -52,7 +52,7 @@ int main(int argc, const char *argv[]) {
 			timesArr[t] = ms_double.count();
 
 			std::cout << stepsArr[t] << "steps:\t" << timesArr[t] << "\t\t"
-					  << stepsArr[t]/timesArr[t] << " steps every ms" << endl;
+					  << timesArr[t]/stepsArr[t] << " steps every ms" << endl;
 		}
 	}
 	else {

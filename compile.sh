@@ -19,4 +19,4 @@ remote_server="pilgor.cps.unizar.es"
 remote_path="/home/$remote_user/"
 
 # Send the compiled files to the remote server via SSH
-scp -r ./compiled_files "$remote_user@$remote_server:$remote_path"
+scp ./bin/* "$remote_user@$remote_server:$remote_path"
