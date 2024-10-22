@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 
-using my_float = long double;
+using my_float = float;
 
 void pi_taylor_chunk(std::vector<my_float> &output, size_t thread_id, size_t start_step, size_t stop_step) {
 	my_float result = 0.0;
