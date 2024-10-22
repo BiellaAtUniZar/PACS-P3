@@ -16,7 +16,7 @@ void pi_taylor_chunk(std::vector<my_float> &output, size_t thread_id, size_t sta
 	my_float sign = 1.0; // Alternating sign
 
 	for (size_t n = start_step; n < stop_step; n++) {
-		my_float input = sign / (2. * n + 1.); // Current term in the series with alternating sign
+		my_float input = sign*1. / (2. * n + 1.); // Current term in the series with alternating sign
 
 		// Kahan summation: Adjust input by subtracting the lost low-order bits
 		my_float y = input - c; // Subtract correction term
