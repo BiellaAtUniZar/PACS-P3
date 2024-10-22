@@ -1,5 +1,0 @@
-/home/conte/Desktop/Lezioni/PACS/Practicas/PACS-P3/CMakeFiles/pi_taylor_sequential.dir
-/home/conte/Desktop/Lezioni/PACS/Practicas/PACS-P3/CMakeFiles/pi_taylor_parallel.dir
-/home/conte/Desktop/Lezioni/PACS/Practicas/PACS-P3/CMakeFiles/pi_taylor_parallel_kahan.dir
-/home/conte/Desktop/Lezioni/PACS/Practicas/PACS-P3/CMakeFiles/edit_cache.dir
-/home/conte/Desktop/Lezioni/PACS/Practicas/PACS-P3/CMakeFiles/rebuild_cache.dir
