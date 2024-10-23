@@ -22,13 +22,13 @@ using my_float = long double;
  * @return The Taylor approximation of Pi from 0 to n, with n=`steps`
  */
 my_float pi_taylor(size_t steps) {
-	my_float result = 0;
+	my_float result = 0.;
 	int sign=1.;
 	for (size_t n = 0; n < steps; n++) {
 		result += sign/(2.*n+1.);
 		sign=-sign;
 	}
-	return 4 * result;
+	return 4. * result;
 }
 
 int main(int argc, const char *argv[]) {
@@ -48,13 +48,13 @@ int main(int argc, const char *argv[]) {
 		std::array<double, 5> timesArr;
 		for (size_t t = 0; t < stepsArr.size(); t++) {
 			auto t1 = high_resolution_clock::now();
-			pi_taylor(stepsArr[t]);
+			auto pi = pi_taylor(stepsArr[t]);
 			auto t2 = high_resolution_clock::now();
 			duration<double, std::milli> ms_double = t2 - t1;
 			timesArr[t] = ms_double.count();
-			
+			std::cout << "Pi: " <<
 			std::cout << stepsArr[t] << "steps: " << timesArr[t] << "\t\t"
-					  << timesArr[t]/stepsArr[t] << " ms every step" << endl;
+					  << timesArr[t]/stepsArr[t] << " ms every step" << endl << endl;
 		}
 	}
 	else {
