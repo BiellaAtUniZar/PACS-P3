@@ -48,7 +48,7 @@ int main(int argc, const char *argv[]) {
     auto steps = ret_pair.first;
     auto threads = ret_pair.second;
 
-    my_float pi=0;
+    my_float pi=0.;
 
     // please complete missing parts
     std::vector<my_float> output(threads,0);
@@ -67,7 +67,7 @@ int main(int argc, const char *argv[]) {
         }
     }
 
-    pi=4*pi;
+    pi=4.*pi;
     std::cout << "For " << steps << ", pi value: "
         << std::setprecision(std::numeric_limits<long double>::digits10 + 1)
         << pi << std::endl;

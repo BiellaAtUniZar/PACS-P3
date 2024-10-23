@@ -20,7 +20,7 @@ remote_path="/home/$remote_user/pacs3"
 
 # Send the compiled files to the remote server via SSH
 scp ./src/* "$remote_user@$remote_server:$remote_path/src"
-scp PilgorCMakeLists.txt "$remote_user@$remote_server:$remote_path/CMakeLists.txt"
+scp ./CMake/PilgorCMakeLists.txt "$remote_user@$remote_server:$remote_path/CMakeLists.txt"
 ssh "$remote_user@$remote_server" << EOF
 cd "$remote_path" && cmake . && make
 EOF

@@ -52,9 +52,9 @@ int main(int argc, const char *argv[]) {
 			auto t2 = high_resolution_clock::now();
 			duration<double, std::milli> ms_double = t2 - t1;
 			timesArr[t] = ms_double.count();
-			std::cout << "Pi: " <<
+			std::cout << "Pi: " << pi <<endl;
 			std::cout << stepsArr[t] << "steps: " << timesArr[t] << "\t\t"
-					  << timesArr[t]/stepsArr[t] << " ms every step" << endl << endl;
+					  << timesArr[t]/(my_float)stepsArr[t] << " ms every step" << endl << endl;
 		}
 	}
 	else {
