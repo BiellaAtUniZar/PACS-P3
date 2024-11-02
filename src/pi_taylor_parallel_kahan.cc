@@ -81,11 +81,9 @@ int main(int argc, const char *argv[]) {
 	auto threads = ret_pair.second;
 
 	my_float pi;
-
-	// please complete missing parts
 	std::vector<my_float> output(threads, 0);
 	std::vector<std::thread> threads_(threads);
-	int slice = steps / threads;
+	size_t slice = steps / threads;
 
 	for (size_t i = 0; i < threads; i++) {
 		size_t start_step = i * slice;
