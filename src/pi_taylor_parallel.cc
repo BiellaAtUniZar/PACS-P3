@@ -53,7 +53,6 @@ int main(int argc, const char *argv[]) {
     std::vector<my_float> output(threads,0);
     std::vector<std::thread> threads_(threads);
     size_t slice=steps/threads; 
-    std::cout  << slice <<std::endl;
     for(size_t i=0;i<threads;i++){
         size_t start_step=i*slice;
         size_t end_step = (i + 1) * slice;
