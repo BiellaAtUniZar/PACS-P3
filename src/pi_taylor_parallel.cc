@@ -55,7 +55,7 @@ int main(int argc, const char *argv[]) {
     size_t slice=steps/threads; 
     for(size_t i=0;i<threads;i++){
         size_t start_step=i*slice;
-        size_t end_step = (i + 1) * slice;
+        ssize_t end_step = (i == threads - 1) ? steps : (i + 1) * slice;
         threads_[i]=std::thread(pi_taylor_chunk,std::ref(output),i,start_step,end_step);
     }
     for(size_t i=0;i<threads;i++){
