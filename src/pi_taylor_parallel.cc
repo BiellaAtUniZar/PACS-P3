@@ -51,6 +51,7 @@ int main(int argc, const char *argv[]) {
 	std::vector<my_float> output(threads, 0);
 	std::vector<std::thread> threads_(threads);
 	size_t slice = steps / threads;
+	auto t1 = std::chrono::high_resolution_clock::now();
 	for (size_t i = 0; i < threads; i++) {
 		size_t start_step = i * slice;
 		ssize_t end_step = (i == threads - 1) ? steps : (i + 1) * slice;
@@ -64,7 +65,12 @@ int main(int argc, const char *argv[]) {
 	}
 
 	pi = 4 * pi;
+
+	auto t2 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double, std::milli> ms_double = t2 - t1;
+
 	std::cout << "For " << steps
-			  << ", pi value: " << std::setprecision(std::numeric_limits<long double>::digits10 + 1)
-			  << pi << std::endl;
+			  << ", pi value: " << std::setprecision(std::numeric_limits<my_float>::digits10 + 1)
+			  << pi << "Duration" << ms_double.count() << std::endl;
+	std::cout << ms_double.count() / (my_float) steps << " ms every step" << std::endl;
 }
