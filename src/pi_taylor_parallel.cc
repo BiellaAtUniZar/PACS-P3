@@ -48,16 +48,14 @@ int main(int argc, const char *argv[]) {
     auto steps = ret_pair.first;
     auto threads = ret_pair.second;
 
-    my_float pi=0.;
+    my_float pi=0;
 
-    // please complete missing parts
     std::vector<my_float> output(threads,0);
     std::vector<std::thread> threads_(threads);
-    int slice=steps/threads; 
-    
+    size_t slice=steps/threads; 
     for(size_t i=0;i<threads;i++){
         size_t start_step=i*slice;
-        size_t end_step = (i + 1) * slice;
+        ssize_t end_step = (i == threads - 1) ? steps : (i + 1) * slice;
         threads_[i]=std::thread(pi_taylor_chunk,std::ref(output),i,start_step,end_step);
     }
     for(size_t i=0;i<threads;i++){
@@ -67,7 +65,7 @@ int main(int argc, const char *argv[]) {
         }
     }
 
-    pi=4.*pi;
+    pi=4*pi;
     std::cout << "For " << steps << ", pi value: "
         << std::setprecision(std::numeric_limits<long double>::digits10 + 1)
         << pi << std::endl;
