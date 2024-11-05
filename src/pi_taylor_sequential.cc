@@ -54,7 +54,7 @@ int main(int argc, const char *argv[]) {
 			timesArr[t] = ms_double.count();
 			std::cout << "For " << steps << ", pi value: "
 					  << std::setprecision(std::numeric_limits<my_float>::digits10 + 1) << pi
-					  << std::endl;
+					  << "Duration" << timesArr[t] << std::endl;
 			std::cout << stepsArr[t] << "steps: " << timesArr[t] << "\t\t"
 					  << timesArr[t] / (my_float) stepsArr[t] << " ms every step" << endl
 					  << endl;

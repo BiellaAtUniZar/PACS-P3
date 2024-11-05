@@ -10,20 +10,25 @@
 
 using my_float = float;
 
-void pi_taylor_chunk(std::vector<my_float> &output, size_t thread_id, size_t start_step, size_t stop_step) {
+void pi_taylor_chunk(std::vector<my_float> &output,
+					 size_t thread_id,
+					 size_t start_step,
+					 size_t stop_step) {
 	my_float result = 0.0;
 	my_float c = 0.0; // A running compensation for lost low-order bits
 	my_float sign = 1.0; // Alternating sign
 
 	for (size_t n = start_step; n < stop_step; n++) {
-		my_float input = sign*1. / (2. * n + 1.); // Current term in the series with alternating sign
+		my_float input =
+				sign * 1. / (2. * n + 1.); // Current term in the series with alternating sign
 
 		// Kahan summation: Adjust input by subtracting the lost low-order bits
 		my_float y = input - c; // Subtract correction term
 		my_float t = result + y; // Add adjusted input to the result
 
 		// Update the correction term
-		c = (t - result) - y; // (t - result) gives the difference, subtracting and recovers the lost part
+		c = (t - result) -
+			y; // (t - result) gives the difference, subtracting and recovers the lost part
 
 		// Update the result
 		result = t;
@@ -47,13 +52,13 @@ my_float reduction(const std::vector<my_float> &output) {
 		my_float t = result + y; // Add adjusted input to the result
 
 		// Update the correction term
-		c = (t - result) - y; // (t - result) gives the difference, subtracting and recovers the lost part
+		c = (t - result) -
+			y; // (t - result) gives the difference, subtracting and recovers the lost part
 
 		// Update the result
 		result = t;
-
 	}
-    return result;
+	return result;
 }
 
 std::pair<size_t, size_t> usage(int argc, const char *argv[]) {
@@ -95,9 +100,10 @@ int main(int argc, const char *argv[]) {
 			threads_[i].join();
 		}
 	}
-    pi=reduction(output);
+	pi = reduction(output);
 	pi = 4. * pi;
 
-	std::cout << "For " << steps << ", pi value: " << std::setprecision(std::numeric_limits<long double>::digits10 + 1)
+	std::cout << "For " << steps
+			  << ", pi value: " << std::setprecision(std::numeric_limits<long double>::digits10 + 1)
 			  << pi << std::endl;
 }
